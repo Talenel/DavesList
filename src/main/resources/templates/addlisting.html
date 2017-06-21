@@ -1,0 +1,117 @@
+!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Add Listing</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+
+    <!-- Latest compiled and minified JavaScript -->
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Bootstrap theme</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li ><a href="/">Home</a></li>
+                <li class="active"><a href="addlisting">Add Listing</a></li>
+                <li><a href="updatelisting">Update a Listing</a></li>
+                <li><a href="roomlist">Rental List</a></li>
+
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<div class="container">
+    <h1>Add Listing Form</h1>
+
+    <form action="#" th:action="@{/addlisting}" th:object="${listing}" method="post">
+        <div class="form-group">
+            <label for="address">Enter the address</label>
+            <input type="text" class="form-control" th:field="*{address}" id="address" placeholder="Address"/><br/>
+            <span class="text-danger" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Address Error</span>
+
+        </div>
+        <div class="form-group">
+            <label for="city">Enter the city</label>
+            <input type="text" class="form-control" th:field="*{city}" id="city" placeholder="City"/><br/>
+            <span class="text-danger" th:if="${#fields.hasErrors('city')}" th:errors="*{city}">City Error</span>
+        </div>
+        <div class="form-group">
+            <label for="state">Enter the State Abbrieviation</label>
+            <input type="text" class="form-control" th:field="*{state}" id="state" placeholder="state"/><br/>
+            <span class="text-danger" th:if="${#fields.hasErrors('state')}" th:errors="*{state}">State Error</span>
+        </div>
+        <div class="form-group">
+            <label for="price">Enter the rental price</label>
+            <input type="text" class="form-control" th:field="*{price}" id="price" placeholder="price"/><br/>
+            <span class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price Error</span>
+        </div>
+        <div class="form-group">
+            <label for="description">Enter a basic description of the room</label>
+            <input type="text" class="form-control" th:field="*{description}" id="description" placeholder="Description"/><br/>
+            <span class="text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description Error</span>
+        </div>
+        <div class="form-group">
+            <label for="rules">Enter the rental rules</label>
+            <input type="text" class="form-control" th:field="*{rules}" id="rules" placeholder="Rules"/><br/>
+            <span class="text-danger" th:if="${#fields.hasErrors('rules')}" th:errors="*{rules}">rules Error</span>
+        </div>
+        <div class="form-group">
+            <label for="wifi"> Does it have wifi?</label>
+            <input type="text" class="form-control" th:field="*{wifi}" id="wifi" placeholder="Yes/No"/><br/>
+            <span th:if="${#fields.hasErrors('wifi')}" th:errors="*{wifi}">Wifi Error</span>
+        </div>
+        <div class="form-group">
+            <label for="cable">Does it have cable?</label>
+            <input type="text" class="form-control" th:field="*{cable}" id="cable" placeholder="None/Basic/Premium"/><br/>
+            <span class="text-danger" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Address Error</span>
+        </div>
+        <div class="form-group">
+            <label for="privateBathroom">Does it have a private bathroom?</label>
+            <input type="text" class="form-control" th:field="*{privateBathroom}" id="privateBathroom" placeholder="Yes/No"/><br/>
+            <span class="text-danger" th:if="${#fields.hasErrors('privateBathroom')}" th:errors="*{privateBathroom}">Bathroom Error</span>
+        </div>
+        <div class="form-group" >
+            <label for="isRented">Enter whether or not the room is rented:</label>
+            <input type="text" class="form-control" th:field="*{isRented}" id="isRented" placeholder="Yes/No"/><br/>
+            <span class="text-danger" th:if="${#fields.hasErrors('isRented')}" th:errors="*{isRented}">Rented Error</span>
+        </div>
+
+
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+
+</div>
+</body>
+</html>
